@@ -7,7 +7,7 @@
 [此JS文件](https://github.com/LanYunDev/ipfs/blob/main/static/file.js)第72行代码
 
 
-# ipfs图床
+## ipfs图床
 
 ~~演示：https://ipfs-drive.pages.dev/~~
 
