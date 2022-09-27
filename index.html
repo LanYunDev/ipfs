@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-	<title>IPFS</title>
-	<meta name="keywords" content="IPFS" />
+	<title>IPFS文件上传站</title>
+	<meta name="keywords" content="IPFS文件上传站" />
   	<link rel="stylesheet" href="./static/style.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script src="./static/file.js"></script>
@@ -14,7 +14,7 @@
 	<input id="file" type="file" multiple="multiple" style="display: none;">
 	<div class="container">
 		<div class="upload">
-			<div class="title">IPFS<small style="font-size:10px;">(文件传到ipfs星际文件系统)</small><input id="xkx" autocomplete="off" maxlength="16" style="display: none;" placeholder="请上传...">
+			<div class="title">IPFS文件上传站<small style="font-size:10px;">(文件传到IPFS星际文件系统)</small><input id="xkx" autocomplete="off" maxlength="16" style="display: none;" placeholder="请上传...">
 			</div>
 			<div class="content" id="dragbox">
 				<svg class="icon" viewBox="0 0 1335 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -23,16 +23,24 @@
 				</svg>
 				<p class="desc">点击上传 / 粘贴上传 / 拖拽上传</p>
 				<p class="desc">永久的、去中心化保存和共享文件</p>
+				<p class="desc">无来源/无审核/无限流量/无限空间</p>
+				<p class="desc">⚠️注意:由于免费上传接口限制,单文件不超过100MB</p>
+				<p class="desc">如需无限制🚫,请在本地搭建IPFS客户端.作为节点.</p>
+				<p class="desc">⚠️注意:上传服务在有网络审查的国家不可用(如CN)</p>
 			</div>
 		</div>
 		<div class="filelist">
 			<div class="title">上传列表
 				<div class="copyall" style="display:none">
 					<button style="width:70px;background-color: #d0dbee;">网关</button>
-					<button onclick="chage(this);" value="cf-ipfs.com" id="cf-ipfs">CloudFl</button>
-                    <button onclick="chage(this);" value="ipfs.fleek.co" id="fleek">fleek.co</button>
-					<button onclick="chage(this);" value="ipfs.drink.cafe" id="cafe">cafe</button>
+					<button onclick="chage(this);" value="ipfs.lanyundev.com" id="cf-ipfs">本站中转ipfs.io</button>
+					<button onclick="chage(this);" value="ipfs.io" id="ipfs">ipfs.io(国内已墙)</button>
+					<button onclick="chage(this);" value="cloudflare-ipfs.com" id="cf-ipfs">CloudFlare</button>
+					<button onclick="chage(this);" value="cf-ipfs.com" id="cf-ipfs">CloudFlare2</button>
+                    			<button onclick="chage(this);" value="ipfs.fleek.co" id="fleek">fleek.co</button>
+<!-- 					<button onclick="chage(this);" value="ipfs.drink.cafe" id="cafe">cafe</button> -->
 					<button onclick="chage(this);" value="crustwebsites.net" id="crustwebsites">crust</button>
+<!-- 					不建议使用: ipfs.slang.cx ipfs.denarius.io  -->
                 </div>
 			    <div class="copyall" style="display:none">
 					<button onclick="copyAll(this);" name="xkx" id="copyAll" style="width:70px;background-color: #d0dbee;">复制全部</button>
@@ -47,7 +55,7 @@
 	</div>
 	<div id="footer" style="position:fixed;width: 100%;text-align: center;bottom: 0px;display: block;">
 		<div style="height: 20px">
-		<p style="color:#000;">您的IP:
+		<p style="color:#000;">您的IP(看个乐):
 		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 		<script>document.write(returnCitySN["cip"])</script>  
 		</p>
