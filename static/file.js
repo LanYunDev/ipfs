@@ -21,7 +21,7 @@ $(() => {
         upload(new Array(file));
     });
     /* 点击上传 */
-    $('.upload .content').on('click', function () {
+    $('.upload .content').on('click', function() {
         $('#file').click();
     });
     /* 监听点击上传 */
@@ -51,29 +51,29 @@ $(() => {
         //if ($('#type').val().trim() === '') return alert('请输入');
         for (let i = 0; i < files.length; i++) {
             var animateimg = files[i].name;
- 	        var imgarr=animateimg.split('\\');
- 	        var myimg=imgarr[imgarr.length-1];
+            var imgarr = animateimg.split('\\');
+            var myimg = imgarr[imgarr.length - 1];
             var houzui = myimg.lastIndexOf('.');
- 	        var ext = myimg.substring(houzui, myimg.length).toUpperCase();  
- 	        var file = files[i];
- 	        if(!file){return false;}
- 	        var fileSize = file.size;
-            var maxSize = 5242880*20*2; //文件大小限制🚫
+            var ext = myimg.substring(houzui, myimg.length).toUpperCase();
+            var file = files[i];
+            if (!file) { return false; }
+            var fileSize = file.size;
+            var maxSize = 5242880 * 20 * 2; //文件大小限制🚫
             // if(ext !='.PNG' && ext !='.GIF' && ext !='.JPG' && ext !='.JPEG' && ext !='.BMP'&& ext !='.SVG'&& ext !='.TIF'&& ext !='.ICO'&& ext !='.3GP'&& ext !='.AVI'&& ext !='.FLV'&& ext !='.MOV'&& ext !='.MKV'&& ext !='.MP4'&& ext !='.MP3'&& ext !='.FLAC'&& ext !='.WEBP'&& ext !='.MPG'&& ext !='.MPEG'&& ext !='.M3U8'&& ext !='.RM'&& ext !='.RMVB'&& ext !='.TS'&& ext !='.wmv'&& ext !='.asf'&& ext !='.webm'&& ext !='.ogg'&& ext !='.ACC'&& ext !='.M4A'&& ext !='.APE'&& ext !='.TXT'&& ext !='.JSON'&& ext !='.DOC'&& ext !='.DOCX'&& ext !='.XLS'&& ext !='.XLSX'&& ext !='.CSV'&& ext !='.SQL'&& ext !='.BAK'&& ext !='.PPT'&& ext !='.PPTX'&& ext !='.ZIP'&& ext !='.RAR'&& ext !='.7Z'&& ext !='.GZ'&& ext !='.TAR'&& ext !='.ISO'&& ext !='.MD'&& ext !='.SH'){  
- 		    //     parent.alert('文件类型错误,请上传图片类型');
- 		    //     $('#file').val(null);return false;  
- 	        // }else 
-            if(parseInt(fileSize) >= parseInt(maxSize)){  
- 		        parent.alert('上传的文件不能超过'+maxSize/1024/1024+'MB');return false;  
- 	        }else{
-		{
- 	        document.querySelector('.container').classList.add('start')
- 	        var type = $('#id');
-  	        api = 'https://ipfs.staging.infura.org:5001/api/v0/add?pin=true'	//API,此API国内不可用.
-            let formData = new FormData();
-            formData.append('file', files[i]);
-            let randomClass = Date.now().toString(36);
-            $('.filelist .list').append(`
+            //     parent.alert('文件类型错误,请上传图片类型');
+            //     $('#file').val(null);return false;  
+            // }else 
+            if (parseInt(fileSize) >= parseInt(maxSize)) {
+                parent.alert('上传的文件不能超过' + maxSize / 1024 / 1024 + 'MB');
+                return false;
+            } else {
+                document.querySelector('.container').classList.add('start')
+                var type = $('#id');
+                api = 'https://ipfs.staging.infura.org:5001/api/v0/add?pin=true' //API,此API国内不可用.
+                let formData = new FormData();
+                formData.append('file', files[i]);
+                let randomClass = Date.now().toString(36);
+                $('.filelist .list').append(`
                 <div class="item ${randomClass}">
                     <div class="file">
                         <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -89,13 +89,13 @@ $(() => {
                                 <path d="M82.603621 941.396379A280.234044 280.234044 0 0 1 0.001138 742.001267a280.063378 280.063378 0 0 1 82.659372-199.110669l145.919675-145.919676a46.535008 46.535008 0 0 1 65.820299 0 46.535008 46.535008 0 0 1 0 65.820298L148.480808 608.710896a187.732916 187.732916 0 0 0-55.352766 133.574814 187.732916 187.732916 0 0 0 55.352766 133.517926 187.732916 187.732916 0 0 0 133.574814 55.352766A187.732916 187.732916 0 0 0 415.289104 875.519192l145.919676-145.919676a46.535008 46.535008 0 0 1 65.820298 0 46.535008 46.535008 0 0 1 0 65.820299l-145.862787 145.919675A280.347821 280.347821 0 0 1 281.998733 1023.998862a280.120266 280.120266 0 0 1-199.395112-82.602483z m292.408239-292.465128a46.42123 46.42123 0 0 1 0-65.820298l208.099093-208.042204a46.478119 46.478119 0 0 1 65.820298 0 46.535008 46.535008 0 0 1 0 65.820298l-208.099093 208.042204a46.42123 46.42123 0 0 1-32.938593 13.653303 46.307453 46.307453 0 0 1-32.824816-13.653303z m354.587656-21.674618a46.535008 46.535008 0 0 1 0-65.820298L875.576081 415.289104a187.732916 187.732916 0 0 0 55.352766-133.517926 187.732916 187.732916 0 0 0-55.352766-133.517925 187.732916 187.732916 0 0 0-133.574814-55.352766 187.334695 187.334695 0 0 0-133.517926 55.352766L462.506777 294.172929a46.591896 46.591896 0 0 1-65.820299 0 46.591896 46.591896 0 0 1 0-65.820299l145.976565-145.919675A279.9496 279.9496 0 0 1 742.001267 0.001138a280.120266 280.120266 0 0 1 199.110668 82.602483A280.290933 280.290933 0 0 1 1023.998862 281.998733a280.120266 280.120266 0 0 1-82.602483 199.110669l-145.919676 145.919676a46.42123 46.42123 0 0 1-32.881704 13.596414 46.535008 46.535008 0 0 1-32.938594-13.368859z" p-id="8129" fill="#909399"></path>
                             </svg>
                         </a>
-						<a title="删除" class="link" onclick="del(this);return false;">
+                        <a title="删除" class="link" onclick="del(this);return false;">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50.13 50.13" style="enable-background:new 0 0 50.13 50.13;" xml:space="preserve">
-								<g>
-								<path style="fill:#010002;" d="M4.574,13.902h40.982c0.345,0,0.625-0.28,0.625-0.625V8.952c0-0.345-0.28-0.625-0.625-0.625H33.315		V0.625C33.315,0.28,33.035,0,32.69,0H17.442c-0.345,0-0.625,0.28-0.625,0.625v7.702H4.574c-0.345,0-0.625,0.28-0.625,0.625v4.325 C3.949,13.622,4.23,13.902,4.574,13.902z M5.199,9.577h12.242c0.345,0,0.625-0.28,0.625-0.625V1.25h13.998v7.702		c0,0.345,0.28,0.625,0.625,0.625h12.242v3.075H5.199V9.577z"/>
-								<path style="fill:#010002;" d="M11.006,18.06H7.17c-0.345,0-0.625,0.28-0.625,0.625v30.82c0,0.345,0.28,0.625,0.625,0.625h35.791	c0.345,0,0.625-0.28,0.625-0.625v-30.82c0-0.345-0.28-0.625-0.625-0.625h-3.836c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.537	v-24.68c0-0.345-0.28-0.625-0.625-0.625h-4.324c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.535v-24.68	c0-0.345-0.28-0.625-0.625-0.625h-4.324c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.537v-24.68c0-0.345-0.28-0.625-0.625-0.625	h-4.325c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.537v-24.68C11.631,18.34,11.351,18.06,11.006,18.06z M14.793,44.614	c0.345,0,0.625-0.28,0.625-0.625V19.31h3.074v24.68c0,0.345,0.28,0.625,0.625,0.625h3.787c0.345,0,0.625-0.28,0.625-0.625V19.31	h3.074v24.68c0,0.345,0.28,0.625,0.625,0.625h3.785c0.345,0,0.625-0.28,0.625-0.625V19.31h3.074v24.68	c0,0.345,0.28,0.625,0.625,0.625h3.787c0.345,0,0.625-0.28,0.625-0.625V19.31h2.586v29.57H7.795V19.31h2.586v24.68 c0,0.345,0.28,0.625,0.625,0.625L14.793,44.614L14.793,44.614z"/>
-								</g>
-								</svg>
+                                <g>
+                                <path style="fill:#010002;" d="M4.574,13.902h40.982c0.345,0,0.625-0.28,0.625-0.625V8.952c0-0.345-0.28-0.625-0.625-0.625H33.315      V0.625C33.315,0.28,33.035,0,32.69,0H17.442c-0.345,0-0.625,0.28-0.625,0.625v7.702H4.574c-0.345,0-0.625,0.28-0.625,0.625v4.325 C3.949,13.622,4.23,13.902,4.574,13.902z M5.199,9.577h12.242c0.345,0,0.625-0.28,0.625-0.625V1.25h13.998v7.702       c0,0.345,0.28,0.625,0.625,0.625h12.242v3.075H5.199V9.577z"/>
+                                <path style="fill:#010002;" d="M11.006,18.06H7.17c-0.345,0-0.625,0.28-0.625,0.625v30.82c0,0.345,0.28,0.625,0.625,0.625h35.791   c0.345,0,0.625-0.28,0.625-0.625v-30.82c0-0.345-0.28-0.625-0.625-0.625h-3.836c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.537   v-24.68c0-0.345-0.28-0.625-0.625-0.625h-4.324c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.535v-24.68   c0-0.345-0.28-0.625-0.625-0.625h-4.324c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.537v-24.68c0-0.345-0.28-0.625-0.625-0.625   h-4.325c-0.345,0-0.625,0.28-0.625,0.625v24.68h-2.537v-24.68C11.631,18.34,11.351,18.06,11.006,18.06z M14.793,44.614  c0.345,0,0.625-0.28,0.625-0.625V19.31h3.074v24.68c0,0.345,0.28,0.625,0.625,0.625h3.787c0.345,0,0.625-0.28,0.625-0.625V19.31 h3.074v24.68c0,0.345,0.28,0.625,0.625,0.625h3.785c0.345,0,0.625-0.28,0.625-0.625V19.31h3.074v24.68  c0,0.345,0.28,0.625,0.625,0.625h3.787c0.345,0,0.625-0.28,0.625-0.625V19.31h2.586v29.57H7.795V19.31h2.586v24.68 c0,0.345,0.28,0.625,0.625,0.625L14.793,44.614L14.793,44.614z"/>
+                                </g>
+                                </svg>
                         </a>
                     </div>
                     <div class="progress">
@@ -114,115 +114,115 @@ $(() => {
                     </div>
                     <div class="result" style="display:none">
                     <input value="" id="Imgs_url" >URL</input>
-				    <input value="" id="Imgs_html">HTML</input>
-				    <input value="" id="Imgs_Ubb">BBCode</input>
-				    <input value="" id="Imgs_markdown">Markdown</input>
+                    <input value="" id="Imgs_html">HTML</input>
+                    <input value="" id="Imgs_Ubb">BBCode</input>
+                    <input value="" id="Imgs_markdown">Markdown</input>
                     </div>
                     <input id="show" name="show" onclick="oCopy(this)" type="text" value="" readonly style="display:none">
                 </div>
             `);
-            $.ajax({
-                url: api,
-                type: 'post',
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                
-                data: formData,
-                xhr: () => {
-                    let xhr = $.ajaxSettings.xhr();
-                    if (!xhr.upload) return;
-                    xhr.upload.addEventListener(
-                        'progress',
-                        e => {
-                            let percent = Math.floor((e.loaded / e.total) * 100);
-                            $('.' + randomClass)
-                                .find('.progress-inner')
-                                .css('width', percent + '%');
-                        },
-                        false
-                    );
-                    return xhr;
-                },
-                success: res => {
-                    var imgSrc = 'https://cf-ipfs.com/ipfs/'+res.Hash
-                    /* 清除input框 */
-                    $('#file').val(null);
-                    if (res.code === -1) {
-                        $('.' + randomClass).fadeOut();
-                        alert(res.Hash);
-                    } else {
-                        if (res.Hash) {
-                            $('.' + randomClass)
-                                .find('.progress-inner')
-                                .addClass('success');
-                            $('.' + randomClass)
-                                .find('.status-success')
-                                .show();
-                            $('.' + randomClass)
-                                .find('#url')
-                                .attr({
-                                    href: imgSrc,
-                                    target: '_blank'
-                                });
-                            //代码链接xkx
-                            $('.' + randomClass)
-                                .find('#Imgs_url')
-                                .attr({
-                                    value: imgSrc
-                                }); 
-                            $('.' + randomClass)
-                                .find('#Imgs_html')
-                                .attr({
-                                    value: '<img src="'+imgSrc+'"/>'
-                                }); 
-                            $('.' + randomClass)
-                                .find('#Imgs_Ubb')
-                                .attr({
-                                    value: '[img]'+imgSrc+'[/img]'
-                                }); 
-                            $('.' + randomClass)
-                                .find('#Imgs_markdown')
-                                .attr({
-                                    value: '![]('+imgSrc+')'
-                                });
-                            //显示链接xkx
-                            $('.' + randomClass)
-                                .find('#show')
-                                .show();
-                            $('.' + randomClass)
-                                .find('#show')
-                                .attr({
-                                    value: imgSrc
-                                });
-                            //复制所有xkx
-                            $('.copyall')
-                                .show();
-                            var tt = $('.filelist .title').html().replace('上传列表', '');
-                            $('.filelist .title').html(tt);
+                $.ajax({
+                    url: api,
+                    type: 'post',
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+
+                    data: formData,
+                    xhr: () => {
+                        let xhr = $.ajaxSettings.xhr();
+                        if (!xhr.upload) return;
+                        xhr.upload.addEventListener(
+                            'progress',
+                            e => {
+                                let percent = Math.floor((e.loaded / e.total) * 100);
+                                $('.' + randomClass)
+                                    .find('.progress-inner')
+                                    .css('width', percent + '%');
+                            },
+                            false
+                        );
+                        return xhr;
+                    },
+                    success: res => {
+                        var imgSrc = 'https://cf-ipfs.com/ipfs/' + res.Hash
+                        /* 清除input框 */
+                        $('#file').val(null);
+                        if (res.code === -1) {
+                            $('.' + randomClass).fadeOut();
+                            alert(res.Hash);
                         } else {
-                            $('.' + randomClass)
-                                .find('.progress-inner')
-                                .addClass('error');
-                            $('.' + randomClass)
-                                .find('.status-error')
-                                .show();
-                            $('.' + randomClass)
-                                .find('#show')
-                                .show();
-                            $('.' + randomClass)
-                                .find('#show')
-                                .attr({
-                                    value: "上传出错！"
-                                });
+                            if (res.Hash) {
+                                $('.' + randomClass)
+                                    .find('.progress-inner')
+                                    .addClass('success');
+                                $('.' + randomClass)
+                                    .find('.status-success')
+                                    .show();
+                                $('.' + randomClass)
+                                    .find('#url')
+                                    .attr({
+                                        href: imgSrc,
+                                        target: '_blank'
+                                    });
+                                //代码链接xkx
+                                $('.' + randomClass)
+                                    .find('#Imgs_url')
+                                    .attr({
+                                        value: imgSrc
+                                    });
+                                $('.' + randomClass)
+                                    .find('#Imgs_html')
+                                    .attr({
+                                        value: '<img src="' + imgSrc + '"/>'
+                                    });
+                                $('.' + randomClass)
+                                    .find('#Imgs_Ubb')
+                                    .attr({
+                                        value: '[img]' + imgSrc + '[/img]'
+                                    });
+                                $('.' + randomClass)
+                                    .find('#Imgs_markdown')
+                                    .attr({
+                                        value: '![](' + imgSrc + ')'
+                                    });
+                                //显示链接xkx
+                                $('.' + randomClass)
+                                    .find('#show')
+                                    .show();
+                                $('.' + randomClass)
+                                    .find('#show')
+                                    .attr({
+                                        value: imgSrc
+                                    });
+                                //复制所有xkx
+                                $('.copyall')
+                                    .show();
+                                var tt = $('.filelist .title').html().replace('上传列表', '');
+                                $('.filelist .title').html(tt);
+                            } else {
+                                $('.' + randomClass)
+                                    .find('.progress-inner')
+                                    .addClass('error');
+                                $('.' + randomClass)
+                                    .find('.status-error')
+                                    .show();
+                                $('.' + randomClass)
+                                    .find('#show')
+                                    .show();
+                                $('.' + randomClass)
+                                    .find('#show')
+                                    .attr({
+                                        value: "上传出错！"
+                                    });
+                            }
                         }
+                    },
+                    fail: () => {
+                        $('.' + randomClass).fadeOut();
                     }
-                },
-                fail: () => {
-                    $('.' + randomClass).fadeOut();
-                }
-            });
- 	        }
+                });
+            }
         }
     }
     /* 获取文件大小 */
@@ -235,62 +235,68 @@ $(() => {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + sizes[i];
     }
 });
-function del(obj){
-	var item = obj.parentNode.parentNode;
-	item.parentNode.removeChild(item);
+
+function del(obj) {
+    var item = obj.parentNode.parentNode;
+    item.parentNode.removeChild(item);
 }
-function sel(obj){
-	for(var i=0;i<document.querySelectorAll('#Imgs'+obj.id).length;i++){
-		document.querySelectorAll('#Imgs'+obj.id)[i].parentElement.nextElementSibling.value = document.querySelectorAll('#Imgs'+obj.id)[i].value;
-	}
+
+function sel(obj) {
+    for (var i = 0; i < document.querySelectorAll('#Imgs' + obj.id).length; i++) {
+        document.querySelectorAll('#Imgs' + obj.id)[i].parentElement.nextElementSibling.value = document.querySelectorAll('#Imgs' + obj.id)[i].value;
+    }
 }
-function chage(obj){
-	for(var i=0;i<document.querySelectorAll("#show").length;i++){
+
+function chage(obj) {
+    for (var i = 0; i < document.querySelectorAll("#show").length; i++) {
         var id = document.querySelectorAll("#show")[i].value.match(/\w{46}/g)[0];
         // if(obj.indexOf("cf-ipfs.com")!=-1){
         //     var newurl = 'https://bafybeidzqxzosahqotekbeb47i6ubstxtkmoxva4oi6fs77siyqqwz6nxq.ipfs.cf-ipfs.com/';
         // }else{
-            
+
         // }
-        var newurl = 'https://'+obj.value+"/ipfs/"+id;
-		
-		document.querySelectorAll("#show")[i].value = newurl;
-		document.querySelectorAll(".list .file #url")[i].href=newurl;
-		//console.log(newurl);
-	}
-}
-function copyAll(obj){
-	var xkx = "";
-	for(var i=0;i<document.querySelectorAll('#show').length;i++){; 
-		var xkx = xkx + document.querySelectorAll('#show')[i].value + '\n';
-	}
-	var txa = document.createElement('textarea');
-	txa.value = xkx;
-    document.body.appendChild(txa);
-	txa.select();
-	var res = document.execCommand('copy');
-	document.body.removeChild(txa);
-	console.log('copy success');
-	console.log(xkx);
-	if (browserRedirect()) {alert('设备类型为手机，有一定几率复制失败！请查看剪切板是否成功复制');}
-}
-function oCopy(obj){
-	obj.select();
-	document.execCommand("Copy");
-	console.log(obj.value);
-	if (browserRedirect()) {alert('设备类型为手机，有一定几率复制失败！请查看剪切板是否成功复制');}
-}
-function browserRedirect(){
-    var sUserAgent = navigator.userAgent.toLowerCase();
-    var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
-   	var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
-   	var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
-   	var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
-   	var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
-   	var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
-   	var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
-   	var bIsAndroid = sUserAgent.match(/android/i) == 'android';
-   	if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
- 	    return 1;}
+        var newurl = 'https://' + obj.value + "/ipfs/" + id;
+
+        document.querySelectorAll("#show")[i].value = newurl;
+        document.querySelectorAll(".list .file #url")[i].href = newurl;
+        //console.log(newurl);
+    }
 }
 
+function copyAll(obj) {
+    var xkx = "";
+    for (var i = 0; i < document.querySelectorAll('#show').length; i++) {;
+        var xkx = xkx + document.querySelectorAll('#show')[i].value + '\n';
+    }
+    var txa = document.createElement('textarea');
+    txa.value = xkx;
+    document.body.appendChild(txa);
+    txa.select();
+    var res = document.execCommand('copy');
+    document.body.removeChild(txa);
+    console.log('copy success');
+    console.log(xkx);
+    if (browserRedirect()) { alert('设备类型为手机，有一定几率复制失败！请查看剪切板是否成功复制'); }
+}
+
+function oCopy(obj) {
+    obj.select();
+    document.execCommand("Copy");
+    console.log(obj.value);
+    if (browserRedirect()) { alert('设备类型为手机，有一定几率复制失败！请查看剪切板是否成功复制'); }
+}
+
+function browserRedirect() {
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+    var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+    var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+    var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+    var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+    var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+    var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+    if (bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid) {
+        return 1;
+    }
+}
